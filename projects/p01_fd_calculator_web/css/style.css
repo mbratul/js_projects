@@ -45,6 +45,10 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+.button_group {
+  display: flex;
+  gap: 1rem;
+}
 .calculator_btn {
   padding: 10px 20px;
   background: #2979ff;

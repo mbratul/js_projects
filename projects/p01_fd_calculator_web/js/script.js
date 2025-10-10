@@ -1,19 +1,31 @@
 "use strict";
+let priniciple = document.querySelector("#priniciple");
+let interestRate = document.querySelector("#interestRate");
+let tenure = document.querySelector("#tenure");
+const calculatorBtn = document.querySelector("#calculatorBtn");
+const resetBtn = document.querySelector("#resetBtn");
+const result = document.querySelector("#result");
 function calculateMaturityAmount() {
   //get the input value
-  const priniciple = parseFloat(document.querySelector("#priniciple").value);
-  const interestRate = parseFloat(
-    document.querySelector("#interestRate").value
-  );
-  const tenure = parseFloat(document.querySelector("#tenure").value);
+  const prinicipleValue = parseFloat(priniciple.value);
+  const interestRateValue = parseFloat(interestRate.value);
+  const tenureValue = parseFloat(tenure.value);
 
   //perform the calculation
   const maturityAmount =
-    priniciple + (priniciple * interestRate * tenure) / 100;
+    prinicipleValue + (prinicipleValue * interestRateValue * tenureValue) / 100;
   //Display the Result
-  const result = document.querySelector("#result");
+
   result.innerText = `Maturity Amount : ${maturityAmount.toFixed(2)}`;
 }
 //add event listener for button
-const calculatorBtn = document.querySelector("#calculatorBtn");
+
 calculatorBtn.addEventListener("click", calculateMaturityAmount);
+// reset button event listener
+
+resetBtn.addEventListener("click", function () {
+  priniciple.value = "";
+  interestRate.value = "";
+  tenure.value = "";
+  result.innerText = "Maturity Amount";
+});
