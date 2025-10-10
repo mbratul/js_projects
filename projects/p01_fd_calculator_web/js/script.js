@@ -1,11 +1,13 @@
 "use strict";
-let priniciple = document.querySelector("#priniciple");
-let interestRate = document.querySelector("#interestRate");
-let tenure = document.querySelector("#tenure");
+const priniciple = document.querySelector("#priniciple");
+const interestRate = document.querySelector("#interestRate");
+const tenure = document.querySelector("#tenure");
 const calculatorBtn = document.querySelector("#calculatorBtn");
 const resetBtn = document.querySelector("#resetBtn");
 const result = document.querySelector("#result");
-function calculateMaturityAmount() {
+
+//FD Calculator handler function
+function handlecalculateMaturityAmount() {
   //get the input value
   const prinicipleValue = parseFloat(priniciple.value);
   const interestRateValue = parseFloat(interestRate.value);
@@ -20,7 +22,7 @@ function calculateMaturityAmount() {
 }
 //add event listener for button
 
-calculatorBtn.addEventListener("click", calculateMaturityAmount);
+calculatorBtn.addEventListener("click", handlecalculateMaturityAmount);
 // reset button event listener
 
 resetBtn.addEventListener("click", function () {
