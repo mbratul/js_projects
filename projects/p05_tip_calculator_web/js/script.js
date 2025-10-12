@@ -20,7 +20,7 @@ calculateBtn.addEventListener("click", function () {
     const tipAmount = billAmountInp * (tipPercentInp / 100);
     const totalAmount = billAmountInp + tipAmount;
 
-    displayTip.textContent = `$${tipAmount.toFixed(2)}`;
-    displayBill.textContent = `$${totalAmount.toFixed(2)}`;
+    displayTip.innerText = `$${tipAmount.toFixed(2)}`;
+    displayBill.innerText = `$${totalAmount.toFixed(2)}`;
   }
 });
