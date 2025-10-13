@@ -20,9 +20,9 @@ function updateClock() {
   const secondsEl = document.querySelector("#seconds");
   const periodEl = document.querySelector("#period");
 
-  hoursEl.innerHTML = hours;
-  minutesEl.innerHTML = minutes;
-  secondsEl.innerHTML = seconds;
-  periodEl.innerHTML = period;
+  hoursEl.innerText = hours;
+  minutesEl.innerText = minutes;
+  secondsEl.innerText = seconds;
+  periodEl.innerText = period;
 }
 setInterval(updateClock, 1000);
