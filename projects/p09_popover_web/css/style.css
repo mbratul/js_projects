@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.pop_over {
+  display: none;
+  position: absolute;
+  width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+.pop_over.active {
+  display: block;
+}
+.btn {
+  display: inline;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #3f51b5;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+.btn:hover {
+  background: #303f9f;
+}
