@@ -34,7 +34,12 @@ h1 {
   border-radius: 5px;
   margin-bottom: 10px;
 }
-.detect_btn {
+.button_group {
+  display: flex;
+  gap: 1rem;
+}
+.detect_btn,
+.reset_btn {
   padding: 10px 20px;
   border: none;
   color: #ffffff;
@@ -43,7 +48,8 @@ h1 {
   cursor: pointer;
   background: #2979ff;
 }
-.detect_btn:hover {
+.detect_btn:hover,
+.reset_btn:hover {
   background: #448aff;
 }
 .display_result {

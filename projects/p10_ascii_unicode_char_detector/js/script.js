@@ -1,5 +1,6 @@
 "use strict";
 const detectBtn = document.querySelector("#detect_btn");
+const resetBtn = document.querySelector("#reset_btn");
 
 function detecteCharacter() {
   const characterInp = document.querySelector("#character_input");
@@ -17,3 +18,9 @@ function isAscii(character) {
   return character.charCodeAt(0) <= 127;
 }
 detectBtn.addEventListener("click", detecteCharacter);
+resetBtn.addEventListener("click", function () {
+  const characterInp = document.querySelector("#character_input");
+  const displayResult = document.querySelector("#display_result");
+  characterInp.value = "";
+  displayResult.innerText = "";
+});
