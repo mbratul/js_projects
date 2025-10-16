@@ -62,15 +62,6 @@
     //Display the Result
     resultNew.innerText = `New Amount $${Math.abs(absoluteValue.toFixed(2))}`;
     resultTotal.innerText = `Total Salary $${Math.abs(totalValue.toFixed(2))}`;
-    // if (previousValue < currentValue) {
-    //   result.innerText = `${Math.abs(
-    //     percentValue.toFixed(2)
-    //   )}% Percent Increase`;
-    // } else {
-    //   result.innerText = `${Math.abs(
-    //     percentValue.toFixed(2)
-    //   )}% Percent Decrease`;
-    // }
   }
   //add event listener for button
 
