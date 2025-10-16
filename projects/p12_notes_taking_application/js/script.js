@@ -19,12 +19,36 @@ function addNote() {
   const textareaNote = note.querySelector("textarea");
 
   saveNote.addEventListener("click", saveNotes);
+  textareaNote.addEventListener("input", saveNotes);
+  trashNote.addEventListener("click", function () {
+    note.remove();
+    saveNotes();
+  });
   main.appendChild(note);
 }
 
 function saveNotes() {
   const allNotes = document.querySelectorAll(".note textarea");
   const data = Array.from(allNotes).map((note) => note.value);
-  console.log(allNotes, data);
-  allNotes.values = " ";
+  //console.log(allNotes, data);
+  if (!data.length) {
+    localStorage.removeItem(allNotes);
+  } else {
+    localStorage.setItem("notes", JSON.stringify(data));
+  }
 }
+
+function loadNotes() {
+  const lsNotes = JSON.parse(localStorage.getItem("notes"));
+  if (lsNotes !== null) {
+    lsNotes.forEach((noteText) => {
+      addNote();
+      const notes = document.querySelectorAll(".note textarea");
+      const lastNote = notes[notes.length - 1];
+      lastNote.value = noteText;
+    });
+  } else {
+    addNote();
+  }
+}
+loadNotes();
