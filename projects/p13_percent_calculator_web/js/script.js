@@ -27,8 +27,8 @@ calculatorBtn.addEventListener("click", handlecalculateMaturityAmount);
 // reset button event listener
 
 resetBtn.addEventListener("click", function () {
-  priniciple.value = "";
-  interestRate.value = "";
+  previous.value = "";
+  current.value = "";
   //tenure.value = "";
-  result.innerText = "Maturity Amount";
+  result.innerText = "Show Result";
 });
