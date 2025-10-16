@@ -13,11 +13,15 @@ function handlecalculateMaturityAmount() {
   const currentValue = parseFloat(current.value);
   //const tenureValue = parseFloat(tenure.value);
 
-  const newValue = previousValue - currentValue;
+  const absoluteValue = previousValue - currentValue;
   //percent the calculation
-  const percentValue = (newValue * 100) / previousValue;
+  const percentValue = (absoluteValue * 100) / previousValue;
   //Display the Result
-  result.innerText = `${percentValue.toFixed(2)} % : Percent `;
+  if (previousValue < currentValue) {
+    result.innerText = `${Math.abs(percentValue.toFixed(2))}% Percent Increase`;
+  } else {
+    result.innerText = `${Math.abs(percentValue.toFixed(2))}% Percent Decrease`;
+  }
 }
 //add event listener for button
 
