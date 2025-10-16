@@ -69,8 +69,9 @@
   // reset button event listener
 
   resetBtn.addEventListener("click", function () {
-    previous.value = "";
-    current.value = "";
-    result.innerText = "Show Result";
+    currentSalary.value = "";
+    percentNumber.value = "";
+    resultNew.innerText = "New Amount";
+    resultTotal.innerText = "Total Amount";
   });
 }
