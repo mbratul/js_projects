@@ -1,77 +1,180 @@
 "use strict";
-{
-  const previous = document.querySelector("#previous");
-  const current = document.querySelector("#current");
-  const tenure = document.querySelector("#tenure");
-  const calculatorBtn = document.querySelector("#calculatorBtn");
-  const resetBtn = document.querySelector("#resetBtn");
-  const result = document.querySelector("#result");
 
-  //FD Calculator handler function
-  function handlecalculateMaturityAmount() {
-    //get the input value
-    const previousValue = parseFloat(previous.value);
-    const currentValue = parseFloat(current.value);
-    //const tenureValue = parseFloat(tenure.value);
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
 
-    const absoluteValue = previousValue - currentValue;
-    //percent the calculation
-    const percentValue = (absoluteValue * 100) / previousValue;
-    //Display the Result
-    if (previousValue < currentValue) {
-      result.innerText = `${Math.abs(
-        percentValue.toFixed(2)
-      )}% Percent Increase`;
+/**
+ * Validates if input values are valid numbers
+ * @param {...number} values - Numbers to validate
+ * @returns {boolean} - True if all values are valid
+ */
+function validateInputs(...values) {
+  return values.every(
+    (value) => !isNaN(value) && value !== null && value !== ""
+  );
+}
+
+/**
+ * Formats number to fixed decimal places
+ * @param {number} num - Number to format
+ * @param {number} decimals - Decimal places (default: 2)
+ * @returns {string} - Formatted number
+ */
+function formatNumber(num, decimals = 2) {
+  return Math.abs(num).toFixed(decimals);
+}
+
+/**
+ * Clears input fields and resets result display
+ * @param {Object} elements - Object containing input and result elements
+ */
+function resetCalculator(elements) {
+  Object.keys(elements).forEach((key) => {
+    if (elements[key].tagName === "INPUT") {
+      elements[key].value = "";
     } else {
-      result.innerText = `${Math.abs(
-        percentValue.toFixed(2)
-      )}% Percent Decrease`;
+      elements[key].textContent =
+        elements[key].dataset.defaultText || "Show Result";
     }
-  }
-  //add event listener for button
-
-  calculatorBtn.addEventListener("click", handlecalculateMaturityAmount);
-  // reset button event listener
-
-  resetBtn.addEventListener("click", function () {
-    previous.value = "";
-    current.value = "";
-    //tenure.value = "";
-    result.innerText = "Show Result";
   });
 }
 
-{
-  const currentSalary = document.querySelector("#current_salary");
-  const percentNumber = document.querySelector("#percent_number");
-  const calculatorBtn = document.querySelector("#salary_calculatorBtn");
-  const resetBtn = document.querySelector("#reset_Salary_Btn");
-  const resultNew = document.querySelector("#result_new");
-  const resultTotal = document.querySelector("#result_total");
+// ============================================
+// PERCENTAGE CHANGE CALCULATOR
+// ============================================
 
-  //FD Calculator handler function
-  function handleSalaryInPercent() {
-    //get the input value
-    const currentSalaryValue = parseFloat(currentSalary.value);
-    const percentNumberValue = parseFloat(percentNumber.value);
-    //const tenureValue = parseFloat(tenure.value);
+function initPercentageChangeCalculator() {
+  // DOM Elements
+  const elements = {
+    previous: document.querySelector("#previous"),
+    current: document.querySelector("#current"),
+    calculatorBtn: document.querySelector("#calculatorBtn"),
+    resetBtn: document.querySelector("#resetBtn"),
+    result: document.querySelector("#result"),
+  };
 
-    const absoluteValue = (currentSalaryValue / 100) * percentNumberValue;
-    //percent the calculation
-    const totalValue = absoluteValue + currentSalaryValue;
-    //Display the Result
-    resultNew.innerText = `New Amount $${Math.abs(absoluteValue.toFixed(2))}`;
-    resultTotal.innerText = `Total Salary $${Math.abs(totalValue.toFixed(2))}`;
+  // Store default text for reset
+  elements.result.dataset.defaultText = "Show Result";
+
+  /**
+   * Calculates percentage change between two values
+   */
+  function calculatePercentageChange() {
+    const previousValue = parseFloat(elements.previous.value);
+    const currentValue = parseFloat(elements.current.value);
+
+    // Validate inputs
+    if (!validateInputs(previousValue, currentValue)) {
+      elements.result.textContent = "Please enter valid numbers";
+      return;
+    }
+
+    if (previousValue === 0) {
+      elements.result.textContent = "Previous value cannot be zero";
+      return;
+    }
+
+    // Calculate percentage change
+    const difference = currentValue - previousValue;
+    const percentChange = (difference / previousValue) * 100;
+
+    // Determine increase or decrease
+    const changeType = percentChange >= 0 ? "Increase" : "Decrease";
+
+    // Display result
+    elements.result.textContent = `${formatNumber(
+      percentChange
+    )}% Percent ${changeType}`;
   }
-  //add event listener for button
 
-  calculatorBtn.addEventListener("click", handleSalaryInPercent);
-  // reset button event listener
+  /**
+   * Resets the calculator
+   */
+  function resetCalculator() {
+    elements.previous.value = "";
+    elements.current.value = "";
+    elements.result.textContent = elements.result.dataset.defaultText;
+  }
 
-  resetBtn.addEventListener("click", function () {
-    currentSalary.value = "";
-    percentNumber.value = "";
-    resultNew.innerText = "New Amount";
-    resultTotal.innerText = "Total Amount";
-  });
+  // Event Listeners
+  elements.calculatorBtn.addEventListener("click", calculatePercentageChange);
+  elements.resetBtn.addEventListener("click", resetCalculator);
 }
+
+// ============================================
+// SALARY CALCULATOR
+// ============================================
+
+function initSalaryCalculator() {
+  // DOM Elements
+  const elements = {
+    currentSalary: document.querySelector("#current_salary"),
+    percentNumber: document.querySelector("#percent_number"),
+    calculatorBtn: document.querySelector("#salary_calculatorBtn"),
+    resetBtn: document.querySelector("#reset_Salary_Btn"),
+    resultNew: document.querySelector("#result_new"),
+    resultTotal: document.querySelector("#result_total"),
+  };
+
+  // Store default texts
+  elements.resultNew.dataset.defaultText = "New Amount";
+  elements.resultTotal.dataset.defaultText = "Total Amount";
+
+  /**
+   * Calculates new salary based on percentage increase
+   */
+  function calculateSalaryIncrease() {
+    const currentSalaryValue = parseFloat(elements.currentSalary.value);
+    const percentNumberValue = parseFloat(elements.percentNumber.value);
+
+    // Validate inputs
+    if (!validateInputs(currentSalaryValue, percentNumberValue)) {
+      elements.resultNew.textContent = "Please enter valid numbers";
+      elements.resultTotal.textContent = "";
+      return;
+    }
+
+    if (currentSalaryValue <= 0) {
+      elements.resultNew.textContent = "Salary must be greater than zero";
+      elements.resultTotal.textContent = "";
+      return;
+    }
+
+    // Calculate increase and total
+    const increaseAmount = (currentSalaryValue * percentNumberValue) / 100;
+    const totalSalary = currentSalaryValue + increaseAmount;
+
+    // Display results
+    elements.resultNew.textContent = `New Amount: $${formatNumber(
+      increaseAmount
+    )}`;
+    elements.resultTotal.textContent = `Total Salary: $${formatNumber(
+      totalSalary
+    )}`;
+  }
+
+  /**
+   * Resets the salary calculator
+   */
+  function resetCalculator() {
+    elements.currentSalary.value = "";
+    elements.percentNumber.value = "";
+    elements.resultNew.textContent = elements.resultNew.dataset.defaultText;
+    elements.resultTotal.textContent = elements.resultTotal.dataset.defaultText;
+  }
+
+  // Event Listeners
+  elements.calculatorBtn.addEventListener("click", calculateSalaryIncrease);
+  elements.resetBtn.addEventListener("click", resetCalculator);
+}
+
+// ============================================
+// INITIALIZE ALL CALCULATORS
+// ============================================
+
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  initPercentageChangeCalculator();
+  initSalaryCalculator();
+});
