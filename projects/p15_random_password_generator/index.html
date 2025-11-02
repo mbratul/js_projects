@@ -15,12 +15,14 @@
       <h1>Password Generator</h1>
       <div class="input_box">
         <input type="text" class="pass_box" id="pass_box" disabled />
-        <span class="material-symbols-outlined"> content_copy </span>
+        <span class="material-symbols-outlined" id="copyIcon">
+          content_copy
+        </span>
       </div>
       <input type="range" min="10" max="30" value="10" id="input_slider" />
       <div class="row">
         <p>Password Length</p>
-        <span id="slider_value">10</span>
+        <span id="slider_value" class="slider_value">10</span>
       </div>
       <div class="row">
         <label for="lowercase">Include Lowercase Letters(a-z)</label>
@@ -28,7 +30,7 @@
       </div>
       <div class="row">
         <label for="uppercase">Include Uppercase Letters(A-Z)</label>
-        <input type="checkbox" name="uppercase" id="uppercase" checked />
+        <input type="checkbox" name="uppercase" id="uppercase" />
       </div>
       <div class="row">
         <label for="numbers">Include Numbers(0-9)</label>
@@ -36,7 +38,7 @@
       </div>
       <div class="row">
         <label for="symbols">Include Symbol(@-*)</label>
-        <input type="checkbox" name="symbols" id="symbols" checked />
+        <input type="checkbox" name="symbols" id="symbols" />
       </div>
       <button type="button" class="getBtn" id="getBtn">
         Generate Password
