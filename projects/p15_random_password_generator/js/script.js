@@ -41,11 +41,12 @@ function generatePassword() {
 }
 
 copyIcon.addEventListener("click", function () {
-  if (passBoxInp.value != "" || passBoxInp.value.length >= 10) {
+  if (passBoxInp.value !== "" && passBoxInp.value.length >= 10) {
     navigator.clipboard.writeText(passBoxInp.value);
     copyIcon.innerText = "check";
+
+    setTimeout(function () {
+      copyIcon.innerText = "content_copy";
+    }, 3000);
   }
-  setTimeout(function () {
-    copyIcon.innerHTML = "content_copy";
-  }, 3000);
 });
