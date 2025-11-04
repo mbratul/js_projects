@@ -74,5 +74,4 @@ function calculateAge() {
     </div>
   `;
   resultContainer.style.display = "block";
-  console.log(birthDateInp);
 }
