@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: #a8caa5;
+}
+.container {
+  padding: 10px;
+}
+h1 {
+  margin-top: 0;
+  padding: 0;
+}
+button {
+  width: 60px;
+  height: 200px;
+  margin: 2px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+.white_key {
+  background-color: white;
+  color: black;
+}
+.black_key {
+  color: white;
+  background-color: black;
+}
