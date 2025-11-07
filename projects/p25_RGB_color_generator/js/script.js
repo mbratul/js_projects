@@ -6,7 +6,7 @@ const blueSlider = document.querySelector("#blueSlider");
 const redValueSpan = document.querySelector("#redValue");
 const greenValueSpan = document.querySelector("#greenValue");
 const blueValueSpan = document.querySelector("#blueValue");
-const copy_button = document.querySelector("#copy_button");
+const copyButton = document.querySelector("#copy_button");
 const inputTypeValue = document.querySelector("#input_type_value");
 
 function updateColor() {
@@ -14,7 +14,7 @@ function updateColor() {
   const greenValue = greenSlider.value;
   const blueValue = blueSlider.value;
 
-  const rgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+  const rgbColor = `rgb(${redValue},${greenValue},${blueValue})`;
   colorBox.style.backgroundColor = rgbColor;
 
   redValueSpan.textContent = redValue;
@@ -23,9 +23,25 @@ function updateColor() {
 
   inputTypeValue.textContent = rgbColor;
 }
+updateColor();
 
+function copyRGBValue() {
+  const redValue = redSlider.value;
+  const greenValue = greenSlider.value;
+  const blueValue = blueSlider.value;
+
+  const rgbColor = `rgb(${redValue},${greenValue},${blueValue})`;
+
+  navigator.clipboard
+    .writeText(rgbColor)
+    .then(() => {
+      alert("RGB Color value copied to clipboard", rgbColor);
+    })
+    .catch((error) => {
+      console.error("Failed to Copy RGB Value", error);
+    });
+}
 redSlider.addEventListener("input", updateColor);
 greenSlider.addEventListener("input", updateColor);
 blueSlider.addEventListener("input", updateColor);
-
-updateColor();
+copyButton.addEventListener("input", copyRGBValue);
