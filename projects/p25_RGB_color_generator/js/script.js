@@ -35,13 +35,13 @@ function copyRGBValue() {
   navigator.clipboard
     .writeText(rgbColor)
     .then(() => {
-      alert("RGB Color value copied to clipboard", rgbColor);
+      alert("RGB Color valued copied to clipboard: " + rgbColor);
     })
     .catch((error) => {
-      console.error("Failed to Copy RGB Value", error);
+      console.error("Failed to copy RGB Color value", error);
     });
 }
 redSlider.addEventListener("input", updateColor);
 greenSlider.addEventListener("input", updateColor);
 blueSlider.addEventListener("input", updateColor);
-copyButton.addEventListener("input", copyRGBValue);
+copyButton.addEventListener("click", copyRGBValue);
