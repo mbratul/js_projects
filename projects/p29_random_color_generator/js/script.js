@@ -1,7 +1,7 @@
 "use strict";
 const containerEL = document.querySelector(".container");
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 30; i++) {
   const colorContainerEL = document.createElement("div");
   colorContainerEL.classList.add("color_container");
 
@@ -33,7 +33,7 @@ function generateColor() {
   for (let i = 0; i < colorContainerEls.length; i++) {
     const colorContainerEl = colorContainerEls[i];
     const newColorCode = randomColors();
-    const colorCodeEl = document.querySelector(".color_code");
+    const colorCodeEl = colorContainerEl.querySelector(".color_code");
 
     colorContainerEl.style.backgroundColor = "#" + newColorCode;
     colorCodeEl.innerText = "#" + newColorCode;
