@@ -35,7 +35,7 @@ function displayResult() {
     <div class="bar_container">
     <div class="bar" style="width:${barWidth};"></div>
     </div>
-    <span class="percentage">${percentage} </span>
+    <span class="percentage">${percentage} %</span>
     `;
     result.appendChild(optionsResult);
   });
@@ -43,6 +43,8 @@ function displayResult() {
 
 function getTotalVotes() {
   return options.reduce(function (total, option) {
-    total + option.votes, 0;
-  });
+    return total + option.votes;
+  }, 0);
 }
+
+displayResult();

@@ -85,3 +85,40 @@ button {
 button:hover {
   background-color: #ff0055;
 }
+.result {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ff1493;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.option_result {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.option_text {
+  flex: 1;
+}
+.bar_container {
+  flex: 3;
+  background-color: #f3f3f3;
+  height: 10px;
+  margin-left: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar {
+  height: 100%;
+  background-color: #ff1493;
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+.percentage {
+  flex: 1;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #ff1493;
+}
