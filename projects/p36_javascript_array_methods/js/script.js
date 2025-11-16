@@ -136,17 +136,17 @@
    * JS Map method
    */
   const arr = ["milton", 4, 457, false, 0, "", "test"];
-  console.log(arr);
+  // console.log(arr);
 
   const falseValue = arr.filter((item) => {
     return !item;
   });
-  console.log(falseValue);
+  // console.log(falseValue);
   const arr2 = [4, 45, 75, 65, 48];
   const arr3 = arr2.map((item) => {
     return item * 2;
   });
-  console.log(arr3);
+  // console.log(arr3);
 
   const arrayObj = [
     { first: "milton", last: "jomadder" },
@@ -155,5 +155,24 @@
   const arr7 = arrayObj.map(({ first, last }) => {
     return { fulname: `${first}, ${last}` };
   });
-  console.log(arr7);
+  // console.log(arr7);
+}
+{
+  /**
+   * concat array
+   */
+  const arr1 = ["milton", "talukder"];
+  const arr2 = [1, 2, 4, 5, 4, 6, 7];
+  const arr3 = arr1.concat(arr2);
+  // console.log(arr3);
+}
+{
+  /**
+   * filter array method
+   */
+  const arr1 = ["laurence", "milton", "talukder"];
+  const arr2 = arr1.filter((item) => {
+    return item.length >= 8;
+  });
+  console.log(arr2);
 }
