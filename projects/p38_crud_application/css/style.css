@@ -52,6 +52,7 @@ body {
   margin-bottom: 20px;
 }
 .row input {
+  width: 95%;
   border: none;
   outline: none;
   margin-left: 20px;
@@ -85,4 +86,30 @@ body {
   position: absolute;
   top: 8px;
   left: 1px;
+}
+.tasklist ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+.tasklist ul li.checked::before {
+  width: 28px;
+  height: 28px;
+  background: url("../images/checked.png");
+}
+.tasklist ul li span {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+  color: white;
+}
+.tasklist ul li span:hover {
+  background-color: white;
+  border-radius: 50%;
+  color: #555;
 }
