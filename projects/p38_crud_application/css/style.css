@@ -19,10 +19,9 @@ body {
 .todo {
   width: 100%;
   max-width: 450px;
-  background-color: rgb(46, 46, 46);
-  min-height: 450px;
+  background-color: rgb(38, 38, 38);
   border-radius: 20px;
-  padding: 20px;
+  padding: 40px 30px 70px;
 }
 .heading1 {
   color: #cecece;
@@ -31,6 +30,8 @@ body {
 }
 .heading2 {
   display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 .heading2 h1 {
   font-size: 40px;
@@ -41,4 +42,47 @@ body {
 }
 .heading2 img {
   width: 40px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.row input {
+  border: none;
+  outline: none;
+  margin-left: 20px;
+  background: transparent;
+}
+.row button {
+  border: none;
+  background-color: #f9d483;
+  padding: 16px 30px;
+  font-weight: bolder;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+.tasklist ul li {
+  list-style: none;
+  color: #d4d4d4;
+  padding: 14px 8px 2px 50px;
+  font-size: 16px;
+  user-select: none;
+  position: relative;
+}
+.tasklist ul li::before {
+  content: "";
+  background: url("../images/unchecked.png");
+  width: 28px;
+  height: 28px;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 8px;
+  left: 1px;
 }
